@@ -1,0 +1,15 @@
+h1{ 
+    justify-self: center;
+    text-align: center;
+    font-size: 10rem;
+
+    color:whitesmoke;
+  
+}
+body{
+   
+    background:linear-gradient(to right, #7bb1fd, #e0eafc); 
+
+    width: 100%;
+    height: 100%;
+}

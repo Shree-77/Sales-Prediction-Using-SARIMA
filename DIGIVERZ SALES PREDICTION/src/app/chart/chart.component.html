@@ -1,0 +1,141 @@
+<!------------------Chart Input------------------------>
+
+<div  [hidden]="display_div1">
+
+
+    <div class="html-divk">
+        <div class="gridk">
+          <div class="grid-itemk"  [hidden]="calendar_div"  >
+            <div class="cardk">
+              <img class="card-imgk" src="assets/istockphoto-1307098713-612x612.jpg" alt="Rome" />
+              
+              <div class="card-contentk">
+                <h1 class="card-headerk">Calendar</h1>
+                <p class="card-textk">
+                  Select specific dates from calendar for predicting the model. So that model will be trained between the two selected dates and results of sale will be forecasted.</p>
+                  <button class="card-btnk" (click)="hide_calendar()">Select <span>&rarr;</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-itemk" [hidden]="to_from_date_div">
+            <div class="cardk">
+              <img
+                class="card-imgk"
+                src="assets/depositphotos_37510401-stock-photo-counting-woman-hands-1-to.jpg"
+                alt="Grand Canyon"
+              />
+              <div class="card-contentk">
+                <h1 class="card-headerk">Total Days</h1>
+                <p class="card-textk">
+                  Provide total number of  days of sales needed to be forecasted. Not only in days, Also for weeks and months can be predicted. Just select total days and periodicity.</p>
+                <button class="card-btnk" (click)="hide_date_input()">Select <span>&rarr;</span></button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid-itemk" [hidden]="single_date">
+            <div class="cardk">
+              <img class="card-imgk" src="assets/hands-with-magnifier-checking-calendar-magnifying-glass-date-day-flat-vector-illustration-time-planning_74855-13092.webp" alt="Maldives" />
+              <div class="card-contentk">
+                <h1 class="card-headerk">Specific Dates</h1>
+                <div [hidden]="specific_date_req">
+                <p class="card-textk">
+                  Not only for a span of days period. Do you want to get predicted sales for a particular day? Forecast here for the specific day sale prediction.<br><br></p>
+                  <button class="card-btnk" (click)="hide_specific_date()">Select <span>&rarr;</span></button>
+                </div>
+                <div [hidden]="specific_date_result">
+                  <p class="card-textk">The forecasted sale value for your specified date is </p><h1>{{predicted_value}}</h1>
+                  <p class="card-textk">Hopefully expected to meet this sales value. Increase your work performance to get more profit.</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>
+
+        <div [hidden]="calendar_input_div">
+            <input type="date" id="userinput2" name="userinput1" [(ngModel)]=prediction_from_date required />
+            <input type="date" id="userinput1" name="userinput2" [(ngModel)]=prediction_end_date required />
+            <button id="button-chart" (click)="generate_prediction_1()">&nbsp;&nbsp; PREDICT &nbsp;&nbsp;</button>
+        </div>
+        
+        <div [hidden]="total_days_input_div">
+            
+            <input id="userinput2" [(ngModel)]="prediction_span" type="text" placeholder="Type required number">&nbsp;&nbsp;&nbsp;&nbsp;
+        <select id="userinput2" #duration (change)="onSelect(duration.value)">
+          <option [ngValue]="null">Select Periodicity</option>
+          <option value="Days">Days</option>
+          <option value="Weeks">Weeks</option>
+          <option value="Months">Months</option>
+        </select>&nbsp;&nbsp;
+        <button id="button-chart" (click)="generate_prediction_2()">&nbsp;&nbsp; PREDICT &nbsp;&nbsp;</button>
+        </div>
+        
+
+        
+        <div [hidden]="specific_days_input_div" >
+            <input type="date" id="userinput2" name="customdate" [(ngModel)]="custom_date" required>
+            <button id="button-chart-1" (click)="generate_prediction_3()">&nbsp;&nbsp; PREDICT &nbsp;&nbsp;</button>
+        </div>
+   </div>
+
+  <!--------- Chart Output -------------------->
+    
+    <div [hidden]="display_div2">
+      <head><link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" /></head>
+      <div class="container">
+         <div class="cards">
+                     
+                      <div class="card">
+                          <div class="card-content">
+                              <div class="number">{{accuracy}}%</div>
+                              <div class="card-name">Accuracy</div>
+                          </div>
+                          <div class="icon-box">
+                              <i class="fas fa-solid fa-chart-line"></i>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <div class="card-content">
+                              <div class="number">{{rmse}}</div>
+                              <div class="card-name">RMSE</div>
+                          </div>
+                          <div class="icon-box">
+                             
+                              <i class="fas fa-solid fa-binoculars"></i>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <div class="card-content">
+                              <div class="number">{{mape}}</div>
+                              <div class="card-name">MAPE</div>
+                          </div>
+                          <div class="icon-box">
+                              <i class="fas fa-solid fa-binoculars"></i>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="charts">
+                  
+                      <div class="chart-display">
+                      <h2>Actual VS Predicted Sales</h2>
+                      <div [hidden]="chart_div_1">
+                          <canvas id="actual-vs-predicted-1" >{{ actual_predicted_chart }}</canvas>
+                      </div>
+                      <div [hidden]="chart_div_2">
+                          <canvas id="actual-vs-predicted-2" >{{ actual_predicted_chart }}</canvas>
+                      </div>
+                  </div>
+                  <div class="chart-display">
+                      <h2>Forecasted Sales</h2>
+                      
+                      <div [hidden]="chart_div_1"><canvas id="forecast-periodicity" >{{ forecasted_chart }}</canvas></div>
+                      <div [hidden]="chart_div_2"><canvas id="forecast-total-days" >{{ forecasted_chart }}</canvas></div>
+                  </div>
+                  </div>
+                  </div>
+              </div>
+              
+      

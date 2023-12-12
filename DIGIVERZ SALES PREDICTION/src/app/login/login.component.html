@@ -1,0 +1,130 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  </head>
+  <body>
+    <main>
+      <div class="big-wrapper light">
+        <img src="assets/shape.png" alt="" class="shape" />
+
+        <header>
+          <div class="container">
+           <div class="overlay"></div>
+              <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="showcase-area">
+          
+          <div class="container">
+            
+            <div class="left">
+              <div class="logo">
+                <img src="assets/logo.png" alt="Logo" />
+                <h3>Sales Forecasting Digiverz</h3>
+              </div>
+              <br><br>
+              <div class="big-title">
+                <h1>Future is here,</h1>
+                <h1>Start Exploring now.</h1>
+              </div>
+              <p class="text">
+                This Sales forecast application makes business owners to plan out their much-needed requirements 
+                for gaining profit and attaining stonks in their market
+              </p>
+            </div>
+
+            <div class="right">
+              <div class="wrapper fadeInDown">
+                <div id="formContent">
+               
+              
+<!-- Login Form -------------------------------------------------------->
+				  
+				  <div [hidden]="logindiv">
+					<br>
+                  <h1 class="active"> Sign In </h1>
+                  <br>
+          <form #gfg = "ngForm">
+					<input class="fadeIn second" type="email" id="email" name="email"  placeholder="Enter Email Here"  pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$"  [(ngModel)]="username" #login_email_td="ngModel" required >
+						<span class="link" *ngIf="login_email_td.invalid && (login_email_td.touched || login_email_td.dirty)">
+							<small class="link" *ngIf="login_email_td.errors?.['required']">Required field</small>
+							<br>
+							<small class="link" *ngIf="login_email_td.errors?.['pattern']">Not an email</small>
+							<br>
+						</span>
+						<br><br>
+
+					<input class="fadeIn third" type="password" id="password" name="password" placeholder="Enter Password Here"  [(ngModel)]="password" #pwd="ngModel" required>
+                    <span class="link" *ngIf="pwd.invalid && (pwd.touched || pwd.dirty)">
+                        <small class="link" *ngIf="pwd.errors?.['required']">Password is a required field</small>
+                    </span>
+                    <br><br>
+                    <input type="submit" class="fadeIn fourth" value="Log In" (click)="loginUser()">
+                  
+          </form>
+               
+          <div id="formFooter">
+            <a class="underlineHover" (click)="loginDiv()">New User? Sign Up</a>
+          </div>
+          <div [hidden]="message_div">{{message}}</div>
+				  </div>
+
+<!-- SignUp Form ---------------------------------------------------------------------------------->
+				  <div [hidden]="signupdiv">
+					<br>
+                  <h1 class="active"> Sign Up </h1>
+                  <br>
+					<form #gfg = "ngForm">
+					  <input class="fadeIn second" type="email" id="email" name="email"  placeholder="Enter Email Here"  pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$"  [(ngModel)]="username_reg" #reg_email_td="ngModel" required >
+						  <span class="link" *ngIf="reg_email_td.invalid && (reg_email_td.touched || reg_email_td.dirty)">
+							  <small class="link" *ngIf="reg_email_td.errors?.['required']">Required field</small>
+							  <br>
+							  <small class="link" *ngIf="reg_email_td.errors?.['pattern']">Not an email</small>
+							  <br>
+						  </span>
+						  <br><br>
+  
+					  <input class="fadeIn third" type="password" id="password" name="password" placeholder="Enter Password Here"  [(ngModel)]="password_reg" #reg_password_td="ngModel" required>
+					  <span class="link" *ngIf="reg_password_td.invalid && (reg_password_td.touched || reg_password_td.dirty)">
+						  <small class="link" *ngIf="reg_password_td.errors?.['required']">Password is a required field</small>
+						</span>
+					  <br><br>
+					  <input type="submit" class="fadeIn fourth" value="Register" (click)="signupUser()">
+					
+					</form>
+			
+					<div id="formFooter">
+					  <a class="underlineHover" (click)="signUpDiv()">Existing User? Sign In</a>
+					</div>
+          <div [hidden]="message_div">{{message}}</div>
+					</div>
+   
+              
+        </div>
+        </div>
+              
+        </div>
+        </div>
+        </div>
+
+        <div class="bottom-area">
+          <div class="container">
+            
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+
+
+
+

@@ -1,0 +1,54 @@
+
+  <head>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  </head>
+<body>
+     
+<h1 style=" position:absolute;top:45px;font-size: 45px;">File Upload</h1>
+
+<!--------Contents--------------------------------------------------------------------------------->
+ <div class="drag-body-area">
+    <div class="container1">
+      <div class="area">
+        
+          <h1 style="margin-left: 10px;">Upload your datasets</h1>
+          <br>
+        
+      
+      <h3 style="color:#1683ff;margin-left: 10px;">Please select a csv file for uploading.</h3>
+      <h3 style="margin-left: 10px;" >Note that CSV file contains linear date and sales for forecasting.</h3>
+      <h4></h4>
+
+    </div>
+  </div>
+  <div class="container">
+
+
+
+<!-------File Upload-------------------------------------------------------------------------------------------->
+<div class="drag-area"> 
+     
+    
+  <div class="card center" style="width: 20rem; height: 15rem;">
+    <img src="assets/undraw_file_sync_re_0pcx.svg" class="card-img-top" alt="...">
+   
+    </div>
+    <br>
+    
+    <input  class="button" type="file" (change)="chooseFile($event)" [(ngModel)]="this.file" #filee="ngModel" required>
+    <div class="button-div" [hidden]="upload_button_div" >
+    <button  class="btn"(click)="uploadFile()">Upload</button>
+    <button  class="btn" (click)="clearFile()" >Clear</button>
+    </div>
+    <div [hidden]="message_div">{{message}}</div>
+
+  </div>
+      
+  </div>
+  </div>
+
+  </body>
